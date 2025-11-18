@@ -1,0 +1,125 @@
+/* ===========================
+   GLOBAL DARK + NEON DESIGN
+==============================*/
+
+body {
+  margin: 0;
+  background: #000000;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Neon Glow Text */
+.neon-title {
+  color: #00eaff;
+  text-shadow: 0 0 8px #00eaff, 0 0 20px #00eaff, 0 0 40px #00eaff;
+}
+
+/* Neon Subtitles */
+.neon-sub {
+  color: #ff00ff;
+  text-shadow: 0 0 6px #ff00ff, 0 0 16px #ff00ff;
+}
+
+/* Neon Hover for Links */
+a {
+  transition: 0.3s;
+}
+a:hover {
+  color: #00eaff;
+  text-shadow: 0 0 8px #00eaff;
+}
+
+/* Neon Button */
+.button {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #00eaff;
+  border-radius: 8px;
+  font-weight: bold;
+  color: #000;
+  margin-top: 15px;
+  transition: 0.25s;
+  box-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #00eaff, 0 0 40px #00eaff;
+}
+
+/* Page Container */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Neon Nav */
+nav {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 18px 25px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #0ff;
+  box-shadow: 0 0 12px #00eaff;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+
+nav a {
+  margin-left: 25px;
+  font-weight: bold;
+}
+
+/* Neon Footer */
+footer {
+  margin-top: 50px;
+  padding: 25px;
+  text-align: center;
+  border-top: 1px solid #00eaff;
+  box-shadow: 0 0 12px #00eaff;
+}
+
+/* ===========================
+   NEON ANIMATED BACKGROUND
+==============================*/
+
+.neon-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(circle at 20% 20%, rgba(0,255,255,0.15), transparent 60%),
+              radial-gradient(circle at 80% 70%, rgba(255,0,255,0.15), transparent 60%),
+              radial-gradient(circle at 50% 50%, rgba(0,150,255,0.1), transparent 70%);
+  background-blend-mode: screen;
+  filter: blur(80px);
+  animation: neonMove 12s ease-in-out infinite alternate;
+}
+
+@keyframes neonMove {
+  0% { transform: scale(1) translateX(0px); }
+  50% { transform: scale(1.2) translateX(40px); }
+  100% { transform: scale(1) translateX(-40px); }
+}
+
+/* Subtle neon grid behind everything */
+.neon-grid {
+  position: fixed;
+  inset: 0;
+  background-size: 50px 50px;
+  background-image: linear-gradient(to right, rgba(0,255,255,0.08) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(0,255,255,0.08) 1px, transparent 1px);
+  animation: gridFade 8s linear infinite;
+  z-index: 0;
+}
+
+@keyframes gridFade {
+  0% { opacity: 0.15; }
+  50% { opacity: 0.25; }
+  100% { opacity: 0.15; }
+}
