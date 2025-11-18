@@ -18,7 +18,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Emergency Germany
+          City
         </motion.h1>
 
         <motion.p
