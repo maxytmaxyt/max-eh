@@ -2,7 +2,7 @@ import "./globals.css";
 import { MotionProvider } from "./motion-provider";
 
 export const metadata = {
-  title: "Emergency German – Roblox Game",
+  title: "City",
   description: "Offizielle Website zum deutschen Einsatzspiel Emergency German"
 };
 
