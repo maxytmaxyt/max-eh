@@ -13,7 +13,7 @@ export default function Navbar() {
     { name: "Stats", href: "/stats" },
     { name: "Admin", href: "/admin" },
     { name: "Shop", href: "/shop" },
-    { name: "Discord", href: "https://discord.gg/DEIN_LINK", external: true },
+    { name: "Discord", href: "https://discord.gg/aZbPV4znYH", external: true },
   ];
 
   const handleLinkClick = () => setOpen(false);
