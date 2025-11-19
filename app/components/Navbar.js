@@ -9,23 +9,26 @@ export default function Navbar() {
 
   const links = [
     { name: "Home", href: "/" },
+    { name: "Cityblitz", href: "/cityblitz" },
     { name: "Features", href: "/features" },
     { name: "Stats", href: "/stats" },
     { name: "Admin", href: "/admin" },
     { name: "Shop", href: "/shop" },
-    { name: "Discord", href: "https://discord.gg/aZbPV4znYH", external: true },
+    { name: "Discord", href: "https://discord.gg/DEINLINK", external: true }
   ];
 
   const handleLinkClick = () => setOpen(false);
 
   return (
-    <nav className="w-full bg-black/30 backdrop-blur-xl border-b border-white/10 fixed top-0 z-50">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-black/30 border-b border-white/10 backdrop-blur-xl">
       <div className="max-w-6xl mx-auto flex justify-between items-center p-4">
+
+        {/* Logo */}
         <h1 className="text-2xl font-bold text-cyan-300 drop-shadow-[0_0_8px_#00fff2]">
-          Emergency German
+          Cityblitz
         </h1>
 
-        {/* Desktop Menu */}
+        {/* Desktop Navigation (nur ab md sichtbar) */}
         <ul className="hidden md:flex gap-6 text-lg">
           {links.map((link, i) =>
             link.external ? (
@@ -40,7 +43,10 @@ export default function Navbar() {
               </li>
             ) : (
               <li key={i}>
-                <Link href={link.href} className="hover:text-cyan-400 transition">
+                <Link
+                  href={link.href}
+                  className="hover:text-cyan-400 transition"
+                >
                   {link.name}
                 </Link>
               </li>
@@ -48,24 +54,24 @@ export default function Navbar() {
           )}
         </ul>
 
-        {/* Mobile Hamburger Icon */}
+        {/* Mobile Button (nur <md sichtbar) */}
         <div
-          className="md:hidden cursor-pointer z-50"
+          className="md:hidden cursor-pointer"
           onClick={() => setOpen(!open)}
         >
           {open ? <X size={28} color="#00fff2" /> : <Menu size={28} color="#00fff2" />}
         </div>
       </div>
 
-      {/* Mobile Menu mit Slide Animation */}
+      {/* Mobile Menu: erscheint genau UNTER der Navbar */}
       <AnimatePresence>
         {open && (
           <motion.ul
-            initial={{ y: -200, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -200, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="absolute top-full left-0 w-full bg-black/80 border-t border-white/10 flex flex-col gap-4 p-4 md:hidden"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="md:hidden bg-black/80 border-t border-white/10 overflow-hidden flex flex-col p-4 gap-3"
           >
             {links.map((link, i) =>
               link.external ? (
@@ -73,7 +79,7 @@ export default function Navbar() {
                   <a
                     href={link.href}
                     target="_blank"
-                    className="hover:text-cyan-400 transition block"
+                    className="block hover:text-cyan-400 transition"
                     onClick={handleLinkClick}
                   >
                     {link.name}
@@ -83,7 +89,7 @@ export default function Navbar() {
                 <li key={i}>
                   <Link
                     href={link.href}
-                    className="hover:text-cyan-400 transition block"
+                    className="block hover:text-cyan-400 transition"
                     onClick={handleLinkClick}
                   >
                     {link.name}
