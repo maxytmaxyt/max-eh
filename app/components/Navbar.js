@@ -1,28 +1,76 @@
 "use client";
+import { useState } from "react";
+import Link from "next/link";
+import { Menu, X } from "lucide-react"; // ✅ Icons importieren
 import { motion } from "framer-motion";
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
+  const links = [
+    { name: "Home", href: "/" },
+    { name: "Infos", href: "/info" },
+    { name: "Team", href: "/team" },
+    { name: "Sneaky Peaks", href: "/sneak-peeks" },
+    { name: "Progress", href: "/progress" },
+    { name: "Events", href: "/events" },
+    { name: "Partners", href: "/partners" },
+    { name: "Discord", href: "https://discord.gg/DEIN_LINK", external: true }
+  ];
+
+  const handleLinkClick = () => setOpen(false);
+
   return (
-    <motion.nav
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="neon-title" style={{ fontSize: "22px" }}>
-        Emergency Germany
+    <nav className="w-full bg-black/30 backdrop-blur-xl border-b border-white/10 fixed top-0 z-50">
+      <div className="max-w-6xl mx-auto flex justify-between items-center p-4">
+        <h1 className="text-2xl font-bold text-cyan-300 drop-shadow-[0_0_8px_#00fff2]">
+          Emergency German
+        </h1>
+
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex gap-6 text-lg">
+          {links.map((link, i) =>
+            link.external ? (
+              <li key={i}><a href={link.href} target="_blank" className="hover:text-cyan-400 transition">{link.name}</a></li>
+            ) : (
+              <li key={i}><Link href={link.href} className="hover:text-cyan-400 transition">{link.name}</Link></li>
+            )
+          )}
+        </ul>
+
+        {/* Mobile Hamburger Icon */}
+        <div className="md:hidden cursor-pointer" onClick={() => setOpen(!open)}>
+          {open ? <X size={28} color="#00fff2" /> : <Menu size={28} color="#00fff2" />}
+        </div>
       </div>
 
-      <div>
-        <a href="/">Home</a>
-        <a href="/info">Infos</a>
-        <a href="/team">Team</a>
-        <a href="/sneak-peeks">Sneak Peeks</a>
-        <a href="/progress">Fortschritt</a>
-        <a href="/events">Events</a>
-        <a href="/partners">Partners</a>
-        <a href="https://discord.gg/KDrnNTdzvc" target="_blank">Discord</a>
-        <a href="https://www.roblox.com/share/g/444416456" target="_blank">Roblox Gruppe</a>
-         </div>
-    </motion.nav>
+      {/* Mobile Menu */}
+      <motion.ul
+        initial={{ height: 0, opacity: 0 }}
+        animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }}
+        className="overflow-hidden flex flex-col gap-4 md:hidden p-4 bg-black/70 border-t border-white/10"
+      >
+        {links.map((link, i) =>
+          link.external ? (
+            <li key={i}>
+              <a
+                href={link.href}
+                target="_blank"
+                className="hover:text-cyan-400 transition"
+                onClick={handleLinkClick}
+              >
+                {link.name}
+              </a>
+            </li>
+          ) : (
+            <li key={i}>
+              <Link href={link.href} className="hover:text-cyan-400 transition" onClick={handleLinkClick}>
+                {link.name}
+              </Link>
+            </li>
+          )
+        )}
+      </motion.ul>
+    </nav>
   );
 }
