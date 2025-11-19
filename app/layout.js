@@ -2,8 +2,8 @@ import "./globals.css";
 import { MotionProvider } from "./motion-provider";
 
 export const metadata = {
-  title: "City",
-  description: "Offizielle Website zum deutschen Einsatzspiel Emergency German"
+  title: "Cityblitz",
+  description: "Offizielle Website zum deutschen Minecraft Server Cityblitz"
 };
 
 export default function RootLayout({ children }) {
