@@ -9,7 +9,6 @@ export default function Navbar() {
 
   const links = [
     { name: "Home", href: "/" },
-    { name: "Cityblitz", href: "/cityblitz" },
     { name: "Features", href: "/features" },
     { name: "Stats", href: "/stats" },
     { name: "Admin", href: "/admin" },
