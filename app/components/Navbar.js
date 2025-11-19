@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react"; // ✅ Icons importieren
+import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Navbar() {
@@ -9,12 +9,11 @@ export default function Navbar() {
 
   const links = [
     { name: "Home", href: "/" },
-    { name: "Infos", href: "/info" },
-    { name: "Team", href: "/team" },
-    { name: "Sneaky Peaks", href: "/sneak-peeks" },
-    { name: "Progress", href: "/progress" },
-    { name: "Events", href: "/events" },
-    { name: "Partners", href: "/partners" },
+    { name: "Cityblitz", href: "/cityblitz" },
+    { name: "Features", href: "/features" },
+    { name: "Stats", href: "/stats" },
+    { name: "Admin", href: "/admin" },
+    { name: "Shop", href: "/shop" },
     { name: "Discord", href: "https://discord.gg/DEIN_LINK", external: true }
   ];
 
@@ -31,9 +30,24 @@ export default function Navbar() {
         <ul className="hidden md:flex gap-6 text-lg">
           {links.map((link, i) =>
             link.external ? (
-              <li key={i}><a href={link.href} target="_blank" className="hover:text-cyan-400 transition">{link.name}</a></li>
+              <li key={i}>
+                <a
+                  href={link.href}
+                  target="_blank"
+                  className="hover:text-cyan-400 transition"
+                >
+                  {link.name}
+                </a>
+              </li>
             ) : (
-              <li key={i}><Link href={link.href} className="hover:text-cyan-400 transition">{link.name}</Link></li>
+              <li key={i}>
+                <Link
+                  href={link.href}
+                  className="hover:text-cyan-400 transition"
+                >
+                  {link.name}
+                </Link>
+              </li>
             )
           )}
         </ul>
@@ -64,7 +78,11 @@ export default function Navbar() {
             </li>
           ) : (
             <li key={i}>
-              <Link href={link.href} className="hover:text-cyan-400 transition" onClick={handleLinkClick}>
+              <Link
+                href={link.href}
+                className="hover:text-cyan-400 transition"
+                onClick={handleLinkClick}
+              >
                 {link.name}
               </Link>
             </li>
