@@ -23,7 +23,7 @@ export default function Navbar() {
     <nav className="w-full bg-black/30 backdrop-blur-xl border-b border-white/10 fixed top-0 z-50">
       <div className="max-w-6xl mx-auto flex justify-between items-center p-4">
         <h1 className="text-2xl font-bold text-cyan-300 drop-shadow-[0_0_8px_#00fff2]">
-          Emergency German
+          Cityblitz
         </h1>
 
         {/* Desktop Menu */}
